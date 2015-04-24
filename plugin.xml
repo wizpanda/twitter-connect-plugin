@@ -10,7 +10,7 @@
 	<issue>https://issues.apache.org/jira/browse/CB/component/12320653</issue>
 
 	<engines>
-		<engine name="cordova-android" version=">=4.0.0" /><!-- Requires CordovaPlugin.preferences -->
+		<engine name="cordova-android" version=">3.9.9" /><!-- Requires Gradle building -->
 	</engines>
 
 	<js-module src="www/TwitterConnect.js" name="TwitterConnect">
