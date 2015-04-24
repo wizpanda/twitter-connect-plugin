@@ -31,7 +31,7 @@ public class TwitterConnect extends CordovaPlugin {
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        Fabric.with(cordova.getActivity().getApplicationContext(), new TwitterCore(new TwitterAuthConfig(getTwitterKey(), getTwitterSecret())));
+        Fabric.with(cordova.getActivity().getApplicationContext(), new Twitter(new TwitterAuthConfig(getTwitterKey(), getTwitterSecret())));
         Log.v(LOG_TAG, "Initialize TwitterConnect");
     }
 
