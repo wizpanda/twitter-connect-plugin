@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="twitter-connect-plugin"
+      version="0.1.0">
+    <name>Twitter Connect</name>
+    <description>Twitter Connect Plugin - Allows single-sign on logins using Twitter</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,twitter,login</keywords>
+    <repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git</repo>
+    <issue>https://issues.apache.org/jira/browse/CB/component/12320653</issue>
+
+    <engines>
+        <engine name="cordova-android" version=">=4.0.0" /><!-- Requires CordovaPlugin.preferences -->
+    </engines>
+
+    <js-module src="www/TwitterConnect.js" name="TwitterConnect">
+        <clobbers target="TwitterConnect" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <framework src="src/android/twitter.gradle" custom="true" type="gradleReference" />
+        <source-file src="src/android/TwitterConnect.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
+    </platform>
+
+   
+</plugin>
