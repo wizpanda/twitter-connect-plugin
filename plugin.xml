@@ -19,6 +19,11 @@
 
     <!-- android -->
     <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="TwitterConnect">
+                <param name="android-package" value="com.manifestwebdesign.twitterconnect.TwitterConnect" />
+            </feature>
+        </config-file>
         <framework src="src/android/twitter.gradle" custom="true" type="gradleReference" />
         <source-file src="src/android/TwitterConnect.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
     </platform>

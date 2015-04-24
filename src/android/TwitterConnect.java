@@ -17,17 +17,30 @@ import android.content.Intent;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-public class TwitterConnectPlugin extends CordovaPlugin {
+import io.fabric.sdk.android.Fabric;
+
+public class TwitterConnect extends CordovaPlugin {
     private static final String LOG_TAG = "Twitter Connect";
     private String action;
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
+        Fabric.with(cordova.getActivity().getApplicationContext(), new TwitterCore(new TwitterAuthConfig(getTwitterKey(), getTwitterSecret())));
         Log.v(LOG_TAG, "Initialize TwitterConnect");
+    }
+
+    private String getTwitterKey() {
+        return preferences.getString("TwitterConsumerKey", "");
+    }
+
+    private String getTwitterSecret() {
+        return preferences.getString("TwitterConsumerSecret", "");
     }
 
     public boolean execute(final String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
