@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="twitter-connect-plugin"
-      version="0.1.0">
-    <name>Twitter Connect</name>
-    <description>Twitter Connect Plugin - Allows single-sign on logins using Twitter</description>
-    <license>Apache 2.0</license>
-    <keywords>cordova,twitter,login</keywords>
-    <repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git</repo>
-    <issue>https://issues.apache.org/jira/browse/CB/component/12320653</issue>
+			id="twitter-connect-plugin"
+	  version="0.1.0">
+	<name>Twitter Connect</name>
+	<description>Twitter Connect Plugin - Allows single-sign on logins using Twitter</description>
+	<license>Apache 2.0</license>
+	<keywords>cordova,twitter,login</keywords>
+	<repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git</repo>
+	<issue>https://issues.apache.org/jira/browse/CB/component/12320653</issue>
 
-    <engines>
-        <engine name="cordova-android" version=">=4.0.0" /><!-- Requires CordovaPlugin.preferences -->
-    </engines>
+	<engines>
+		<engine name="cordova-android" version=">=4.0.0" /><!-- Requires CordovaPlugin.preferences -->
+	</engines>
 
-    <js-module src="www/TwitterConnect.js" name="TwitterConnect">
-        <clobbers target="TwitterConnect" />
-    </js-module>
+	<js-module src="www/TwitterConnect.js" name="TwitterConnect">
+		<clobbers target="TwitterConnect" />
+	</js-module>
 
-    <!-- android -->
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="TwitterConnect">
-                <param name="android-package" value="com.manifestwebdesign.twitterconnect.TwitterConnect" />
-            </feature>
-        </config-file>
-        <framework src="src/android/twitter.gradle" custom="true" type="gradleReference" />
-        <source-file src="src/android/TwitterConnect.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
-    </platform>
-
-   
+	<!-- android -->
+	<platform name="android">
+		<preference name="FABRIC_KEY" />
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="TwitterConnect">
+				<param name="android-package" value="com.manifestwebdesign.twitterconnect.TwitterConnect" />
+			</feature>
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<meta-data android:name="io.fabric.ApiKey" android:value="$FABRIC_KEY" />
+		</config-file>
+		 
+		<framework src="src/android/twitter.gradle" custom="true" type="gradleReference" />
+		<source-file src="src/android/TwitterConnect.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
+	</platform>
 </plugin>
