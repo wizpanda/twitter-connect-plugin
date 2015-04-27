@@ -53,6 +53,9 @@ public class TwitterConnect extends CordovaPlugin {
             login(activity, callbackContext);
             return true;
         }
+		if (action.equals("logout")) {
+			logout(callbackContext);
+		}
         return false;
     }
 
@@ -74,6 +77,17 @@ public class TwitterConnect extends CordovaPlugin {
                         callbackContext.error("Failed login session");
                     }
                 });
+            }
+        });
+    }
+	
+	 private void logout(final CallbackContext callbackContext) {
+        cordova.getThreadPool().execute(new Runnable() {
+            @Override
+            public void run() {
+                Twitter.logOut();
+				Log.v(LOG_TAG, "Logged out");
+                callbackContext.success();
             }
         });
     }

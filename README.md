@@ -55,7 +55,7 @@ You should now be able to: `cordova run android`
 
 ### Usage
 
-This plugin adds an object to the window named TwitterConnect. Right now, you can only login.
+This plugin adds an object to the window named TwitterConnect. Right now, you can only login and logout.
 
 ##### Login
 
@@ -80,4 +80,18 @@ The login reponse oject is defined as:
   secret: '<Twitter Oauth Secret>',
   token: '<Twitter Oauth Token>'
 }
+```
+
+##### Logout
+
+Logout using the `.logout` method:
+```
+TwitterConnect.logout(
+  function() {
+	console.log('Successful logout!');
+  },
+  function() {
+    console.log('Error logging out');
+  }
+);
 ```
