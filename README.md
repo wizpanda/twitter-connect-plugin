@@ -3,6 +3,8 @@ Cordova/PhoneGap plugin to use Twitter Single Sign On
 
 Using Twitter's Fabric SDK, you can enable SSO with your Android apps. It's a fairly involved process, so I'll try to lay out every step necessary.
 
+### Install
+
 ##### Get a Fabric API key
 To use Fabric, you'll need to [sign up](https://get.fabric.io/twitter-login). Apparently they have to authorize people manually, so it might be a while until your account is created, mine took about an hour.
 
@@ -33,8 +35,8 @@ Underneath the first `buildscript` heading (around line 24), change the `reposit
 ```
 repositories {
   mavenCentral()
-	jcenter()
-    maven { url 'https://maven.fabric.io/public' }
+  jcenter()
+  maven { url 'https://maven.fabric.io/public' }
 }
 ```
 
@@ -50,3 +52,32 @@ dependencies {
 
 ##### Finished!
 You should now be able to: `cordova run android`
+
+### Usage
+
+This plugin adds an object to the window named TwitterConnect. Right now, you can only login.
+
+##### Login
+
+Login using the `.login` method:
+```
+TwitterConnect.login(
+  function(result) {
+    console.log('Successful login!');
+    console.log(result);
+  }, function(error) {
+    console.log('Error logging in');
+    console.log(error);
+  }
+);
+```
+
+The login reponse oject is defined as:
+```
+{
+  userName: '<Twitter User Name>',
+  userId: '<Twitter User Id>',
+  secret: '<Twitter Oauth Secret>',
+  token: '<Twitter Oauth Token>'
+}
+```
