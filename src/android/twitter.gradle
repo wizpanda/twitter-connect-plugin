@@ -11,4 +11,7 @@ dependencies {
 	compile('com.twitter.sdk.android:twitter:1.4.0@aar') {
 		transitive = true
 	}
+	compile('com.twitter.sdk.android:tweet-composer:0.7.3@aar') {
+		transitive = true;
+	}
 }
