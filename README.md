@@ -27,28 +27,7 @@ Open `config.xml` (in your project's root) and add these two lines before the cl
 Of course, replace the values with the keys you got from the above steps.
 
 ##### Modify `build.gradle`
-Unfortunately, I don't know of an easier way to do this. This part can be overwritten if you're not careful.
-
-Open the file `platforms/android/build.gradle`
-
-Underneath the first `buildscript` heading (around line 24), change the `repositories` block to this:
-```
-repositories {
-  mavenCentral()
-  jcenter()
-  maven { url 'https://maven.fabric.io/public' }
-}
-```
-
-Next, go down to around line 48. You should be right after the big `if (gradle.gradleVersion >= "2.2") {` closing brace.
-
-Add this:
-```
-dependencies {
-  classpath 'com.android.tools.build:gradle:1.1.3'
-  classpath 'io.fabric.tools:gradle:1.+'  
-}
-```
+Turns out that this was all unnecessary, so the plugin should work without modifying generated files!
 
 ##### Finished!
 You should now be able to: `cordova run android`
