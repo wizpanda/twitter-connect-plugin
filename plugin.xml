@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 			id="twitter-connect-plugin"
-	  version="0.2.0">
+	  version="0.3.0">
 	<name>Twitter Connect</name>
 	<description>Twitter Connect Plugin - Allows single-sign on logins using Twitter</description>
 	<license>Apache 2.0</license>
-	<keywords>cordova,twitter,login</keywords>
+	<keywords>cordova,twitter,login,connect</keywords>
 	<repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git</repo>
 	<issue>https://issues.apache.org/jira/browse/CB/component/12320653</issue>
 
