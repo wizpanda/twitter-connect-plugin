@@ -1,7 +1,7 @@
 # twitter-connect-plugin
 Cordova/PhoneGap plugin to use Twitter Single Sign On
 
-Using Twitter's Fabric SDK, you can enable SSO with your Android apps. It's a fairly involved process, so I'll try to lay out every step necessary.
+Using Twitter's Fabric SDK, you can enable SSO with your Android and iOS apps. It's a fairly involved process, so I'll try to lay out every step necessary.
 
 ### Install
 
@@ -25,9 +25,6 @@ Open `config.xml` (in your project's root) and add these two lines before the cl
 <preference name="TwitterConsumerSecret" value="<Twitter Consumer Secret>" />
 ````
 Of course, replace the values with the keys you got from the above steps.
-
-##### Modify `build.gradle`
-Turns out that this was all unnecessary, so the plugin should work without modifying generated files!
 
 ##### Finished!
 You should now be able to: `cordova run android`
