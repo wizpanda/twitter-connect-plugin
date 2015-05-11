@@ -27,3 +27,4 @@ proguard/
 *.log
 /nbproject/private/
 nbproject
+.DS_Store
