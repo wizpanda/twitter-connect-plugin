@@ -14,7 +14,7 @@ The only thing we really need is the API key. You can find it on the [organizati
 Create a Twitter application and get the consumer key and consumer secret.
 
 ##### Add plugin to your Cordova app
-`cordova plugin add https://github.com/ManifestWebDesign/twitter-connect-plugin.git --variable FABRIC_KEY=<Fabric API Key>`
+`cordova plugin add twitter-connect-plugin --variable FABRIC_KEY=<Fabric API Key>`
 
 Make sure you put in your valid Fabric API Key.
 
