@@ -27,7 +27,7 @@ Open `config.xml` (in your project's root) and add these two lines before the cl
 Of course, replace the values with the keys you got from the above steps.
 
 ##### Finished!
-You should now be able to: `cordova run android`
+You should now be able to: `cordova run android` or `cordova run ios`
 
 ### Usage
 
@@ -48,7 +48,7 @@ TwitterConnect.login(
 );
 ```
 
-The login reponse oject is defined as:
+The login reponse object is defined as:
 ```
 {
   userName: '<Twitter User Name>',
