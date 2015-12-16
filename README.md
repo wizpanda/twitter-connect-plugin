@@ -26,6 +26,11 @@ Open `config.xml` (in your project's root) and add these two lines before the cl
 ````
 Of course, replace the values with the keys you got from the above steps.
 
+For iOS, the deployment target needs to be at least 7.0. You can set this in the config.xml file like so:
+````
+<preference name="deployment-target" value="7.0" />
+````
+
 ##### Finished!
 You should now be able to: `cordova run android` or `cordova run ios`
 
