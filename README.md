@@ -35,6 +35,10 @@ For iOS, the deployment target needs to be at least 7.0. You can set this in the
 <preference name="deployment-target" value="7.0" />
 ````
 
+##### Dependencies
+
+Dependencies have been added in the Android version for the core SDK (````com.twitter.sdk.android.core````) and for retrofit ````retrofit.*```` to simplify the REST URLs (See [Square Retrofit](http://square.github.io/retrofit/))
+
 ##### Finished!
 You should now be able to: `cordova run android` or `cordova run ios`
 
@@ -54,7 +58,7 @@ You'll need to specify iOS7 for TwitterKit
 
 ### Usage
 
-This plugin adds an object to the window named TwitterConnect. Right now, you can only login and logout.
+This plugin adds an object to the window named TwitterConnect. Right now, you can only login and logout and get a user's profile information. The showUser method shows how to call any of the Twitter REST API methods using the TwitterAPIClient.
 
 ##### Login
 
@@ -94,3 +98,22 @@ TwitterConnect.logout(
   }
 );
 ```
+##### ShowUser
+
+Show a user's profile information using the a GET to the `/1.1/users/show.json` REST API call:
+```
+TwitterConnect.showUser(
+  function(result) {
+    console.log('User Profile:');
+    console.log(result);
+    console.log('Twitter handle :'+result.userName);
+  }, function(error) {
+    console.log('Error retrieving user profile');
+    console.log(error);
+  }
+);
+```
+
+The user/show.json API returns a JSON response object containing all the published information as per the Twitter API specifications.
+
+See [Twitter GET users/show Developer Documentation](https://dev.twitter.com/rest/reference/get/users/show)
