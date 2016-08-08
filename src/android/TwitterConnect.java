@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
+import com.twitter.sdk.android.core.*;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -15,15 +16,13 @@ import org.json.JSONObject;
 import android.content.Intent;
 
 import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterCore;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 import io.fabric.sdk.android.Fabric;
+import retrofit.client.Response;
+import retrofit.http.GET;
+import retrofit.http.Query;
+import retrofit.mime.TypedByteArray;
 
 public class TwitterConnect extends CordovaPlugin {
 
@@ -56,6 +55,10 @@ public class TwitterConnect extends CordovaPlugin {
 		}
 		if (action.equals("logout")) {
 			logout(callbackContext);
+			return true;
+		}
+		if (action.equals("showUser")) {
+			showUser(callbackContext);
 			return true;
 		}
 		return false;
@@ -94,6 +97,50 @@ public class TwitterConnect extends CordovaPlugin {
 		});
 	}
 
+	/**
+	 * Extends TwitterApiClient adding our additional endpoints
+	 * via the custom 'UserService'
+	 */
+	class UserServiceApi extends TwitterApiClient {
+		public UserServiceApi(TwitterSession session) {
+			super(session);
+		}
+
+		public UserService getCustomService() {
+			return getService(UserService.class);
+		}
+	}
+
+	interface UserService {
+		@GET("/1.1/users/show.json")
+		void show(@Query("user_id") long id, Callback<Response> cb);
+	}
+
+	private void showUser(final CallbackContext callbackContext) {
+		cordova.getThreadPool().execute(new Runnable() {
+			@Override
+			public void run() {
+				UserServiceApi twitterApiClient = new UserServiceApi(Twitter.getSessionManager().getActiveSession());
+				UserService userService = twitterApiClient.getCustomService();
+				userService.show(Twitter.getSessionManager().getActiveSession().getUserId(), new Callback<Response>() {
+					@Override
+					public void success(Result<Response> result) {
+						try {
+							callbackContext.success(new JSONObject(new String(((TypedByteArray) result.response.getBody()).getBytes())));
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+					}
+					@Override
+					public void failure(TwitterException exception) {
+						Log.v(LOG_TAG, "Twitter API Failed "+exception.getLocalizedMessage());
+						callbackContext.error(exception.getLocalizedMessage());
+					}
+				});
+			}
+		});
+	}
+	
 	private JSONObject handleResult(TwitterSession result) {
 		JSONObject response = new JSONObject();
 		try {
