@@ -121,3 +121,19 @@ TwitterConnect.showUser(
 The user/show.json API returns a JSON response object containing all the published information as per the Twitter API specifications.
 
 See [Twitter GET users/show Developer Documentation](https://dev.twitter.com/rest/reference/get/users/show)
+
+## Troubleshooting
+
+### Android - Problem: "com.android.dex.DexException: Multiple dex files define Landroid/support"
+
+Go to your Platforms/android/build.gradle
+
+Add the following code to the end.
+
+```
+configurations {
+	all*.exclude group: 'com.android.support', module: 'support-v4'
+}
+```
+
+Thanks to [@jineum](https://github.com/ManifestWebDesign/twitter-connect-plugin/issues/8#issuecomment-139521036)
