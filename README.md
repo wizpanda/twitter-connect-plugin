@@ -22,6 +22,9 @@ Create a Twitter application and get the consumer key and consumer secret.
 
 Make sure you put in your valid Fabric API Key in place of `<Fabric API Key>`.
 
+Alternatively, you can install the plugin using the GIT url:
+`cordova plugin add https://github.com/ManifestWebDesign/twitter-connect-plugin --variable FABRIC_KEY=<Fabric API Key>`
+
 ##### Add configuration to config.xml
 Open `config.xml` (in your project's root) and add these two lines before the closing ```</widget>``` tag:
 ````
