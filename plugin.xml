@@ -12,14 +12,22 @@
 
 	<engines>
 		<engine name="cordova-android" version=">3.9.9" /><!-- Requires Gradle building -->
-<!--		<engine name="cordova-ios" version=">=1.7.1" />-->
+<!--	<engine name="cordova-ios" version=">=1.7.1" />-->
 	</engines>
 
 	<js-module src="www/TwitterConnect.js" name="TwitterConnect">
 		<clobbers target="TwitterConnect" />
 	</js-module>
 
+	<!-- added to make twitter search timeline widget to work on iOS -->
+	<config-file target="config.xml" parent="/*">
+        <allow-navigation href="about:*" />
+    </config-file>
+
 	<preference name="FABRIC_KEY" />
+	<preference name="TWITTER_KEY" />
+	<preference name="TWITTER_SECRET" />
+
 	<!-- android -->
 	<platform name="android">
 
@@ -30,10 +38,17 @@
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
 			<meta-data android:name="io.fabric.ApiKey" android:value="$FABRIC_KEY" />
+			<activity android:name="com.manifestwebdesign.twitterconnect.TimelineListActivity" android:label="TimelineListActivity" android:theme="@android:style/Theme.NoTitleBar"></activity>
+		</config-file>
+		<config-file target="res/xml/config.xml" parent="widget">
+			<preference name="TwitterConsumerKey" value="$TWITTER_KEY" />
+			<preference name="TwitterConsumerSecret" value="$TWITTER_SECRET" />
 		</config-file>
 
 		<framework src="src/android/twitter.gradle" custom="true" type="gradleReference" />
 		<source-file src="src/android/TwitterConnect.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
+		<source-file src="src/android/TimelineListActivity.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
+		<source-file src="src/android/timeline.xml" target-dir="res/layout" />
 	</platform>
 
 	<!-- ios -->
@@ -43,9 +58,16 @@
 				<param name="ios-package" value="TwitterConnect" />
 			</feature>
 		</config-file>
+		<config-file target="config.xml" parent="widget">
+			<preference name="TwitterConsumerKey" value="$TWITTER_KEY" />
+			<preference name="TwitterConsumerSecret" value="$TWITTER_SECRET" />
+			<preference name="deployment-target" value="7.0" />
+		</config-file>
 
 		<header-file src="src/ios/TwitterConnect.h" />
 		<source-file src="src/ios/TwitterConnect.m" />
+		<header-file src="src/ios/ListTimelineViewController.h" />
+		<source-file src="src/ios/ListTimelineViewController.m" />
 
 		<framework src="src/ios/Fabric.framework" custom="true" />
 		<framework src="src/ios/TwitterKit.framework" custom="true" />
@@ -63,7 +85,7 @@
 				<key>APIKey</key>
 				<string>$FABRIC_KEY</string>
 				<key>Kits</key>
-				<array></array>
+				<array>$FABRIC_KEY</array>
 			</dict>
 		</config-file>
 	</platform>
