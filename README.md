@@ -1,5 +1,6 @@
 # twitter-connect-plugin
 Cordova/PhoneGap plugin to use Twitter Single Sign On
+## **NOTE: This plugin has been extended from https://github.com/ManifestWebDesign/twitter-connect-plugin. Not only performs authentication on your mobile device but it also allows you to call the tweet composer and has also the ability to show a twitter search timeline. This last feature is not yet complete.**
 
 Using Twitter's Fabric SDK, you can enable SSO with your Android and iOS apps. It's a fairly involved process, so I'll try to lay out every step necessary.
 
@@ -41,6 +42,8 @@ Add the following to your config:
 ```
 <gap:plugin name="twitter-connect-plugin" source="npm" spec="0.5.0">
 	<param name="FABRIC_KEY" value="<Fabric API Key>" />
+  <param name="TWITTER_KEY" value="<Twitter Consumer Key>" />
+  <param name="TWITTER_SECRET" value="<Twitter Consumer Secret>" />
 </gap:plugin>
 ```
 
@@ -107,6 +110,10 @@ TwitterConnect.showUser(
 );
 ```
 
+The user/show.json API returns a JSON response object containing all the published information as per the Twitter API specifications.
+
+See [Twitter GET users/show Developer Documentation](https://dev.twitter.com/rest/reference/get/users/show)
+
 ##### OpenComposer
 
 Calls the tweet composer in order to send tweets with embedded images and other. Must be authenticated in order to open the composer.
@@ -132,10 +139,6 @@ TwitterConnect.showTimeline('#fabric',
   }
 );
 ```
-
-The user/show.json API returns a JSON response object containing all the published information as per the Twitter API specifications.
-
-See [Twitter GET users/show Developer Documentation](https://dev.twitter.com/rest/reference/get/users/show)
 
 ## Troubleshooting
 
