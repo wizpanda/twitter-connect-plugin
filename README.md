@@ -41,7 +41,7 @@ Add the following to your config:
 
 ```
 <gap:plugin name="twitter-connect-plugin" source="npm" spec="0.5.0">
-	<param name="FABRIC_KEY" value="<Fabric API Key>" />
+  <param name="FABRIC_KEY" value="<Fabric API Key>" />
   <param name="TWITTER_KEY" value="<Twitter Consumer Key>" />
   <param name="TWITTER_SECRET" value="<Twitter Consumer Secret>" />
 </gap:plugin>
