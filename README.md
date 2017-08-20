@@ -87,7 +87,7 @@ Logout using the `.logout` method:
 ```
 TwitterConnect.logout(
   function() {
-	console.log('Successful logout!');
+    console.log('Successful logout!');
   },
   function() {
     console.log('Error logging out');
