@@ -7,11 +7,10 @@ Using Twitter's Fabric SDK, you can enable SSO with your Android and iOS apps. I
 ### Install
 
 ##### Get a Fabric API key
-To use Fabric, you'll need to [sign up](https://get.fabric.io/twitter-login). Apparently they have to authorize people manually, so it might be a while until your account is created, mine took about an hour.
 
 The only thing we really need is the API key. Getting the API key is [fairly tricky](https://twittercommunity.com/t/how-can-i-get-apikey/26162/18), but this process seems to work:
 
-1. Login to Fabric account and open https://fabric.io/kits/android/crashlytics/install
+1. [Sign up](https://get.fabric.io/twitter-login) for a Fabric account and then open https://fabric.io/kits/android/crashlytics/install. You don't need to do the onboarding process.
 2. Find the meta-data code block in AndroidManifest.xml
 3. Find your API Key pre filled in the code.
 
