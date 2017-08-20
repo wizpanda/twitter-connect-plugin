@@ -63,7 +63,8 @@ TwitterConnect.login(
   function(result) {
     console.log('Successful login!');
     console.log(result);
-  }, function(error) {
+  },
+  function(error) {
     console.log('Error logging in');
     console.log(error);
   }
@@ -102,7 +103,8 @@ TwitterConnect.showUser(
     console.log('User Profile:');
     console.log(result);
     console.log('Twitter handle :'+ result.screen_name);
-  }, function(error) {
+  },
+  function(error) {
     console.log('Error retrieving user profile');
     console.log(error);
   }
@@ -120,7 +122,8 @@ Calls the tweet composer in order to send tweets with embedded images and other.
 TwitterConnect.openComposer('insert default text here, can be empty',
   function() {
     console.log('Success');
-  }, function() {
+  },
+  function() {
     console.log('Error');
   }
 );
@@ -133,7 +136,8 @@ Launches a new view with a search timeline. Warning: this view will override the
 TwitterConnect.showTimeline('#fabric',
   function() {
     console.log('Success');
-  }, function() {
+  },
+  function() {
     console.log('Error');
   }
 );
