@@ -53,7 +53,7 @@ You'll need to specify iOS7 for TwitterKit
 
 ### Usage
 
-This plugin adds an object to the window named TwitterConnect. Right now, you can only login and logout and get a user's profile information. The showUser method shows how to call any of the Twitter REST API methods using the TwitterAPIClient.
+This plugin adds an object to the window named TwitterConnect. The showUser method shows how to call any of the Twitter REST API methods using the TwitterAPIClient.
 
 ##### Login
 
