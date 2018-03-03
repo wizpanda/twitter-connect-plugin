@@ -1,6 +1,8 @@
 # twitter-connect-plugin
-### **Using Twitter's Fabric SDK**
 Cordova/PhoneGap plugin to use Twitter Single Sign On
+### **NOTE: This plugin has been extended from https://github.com/ManifestWebDesign/twitter-connect-plugin. Not only performs authentication on your mobile device but it also allows you to call the tweet composer and has also the ability to show a twitter search timeline. This last feature is not yet complete.**
+
+Using Twitter's Fabric SDK, you can enable SSO with your Android and iOS apps. It's a fairly involved process, so I'll try to lay out every step necessary.
 
 ### Install
 
@@ -13,8 +15,7 @@ The only thing we really need is the API key. Getting the API key is [fairly tri
 3. Find your API Key pre filled in the code.
 
 ##### Create a Twitter app
-
-Create a Twitter application in https://apps.twitter.com and get the consumer key and secret under the "Keys and Access Tokens" tab.
+Create a Twitter application and get the consumer key and consumer secret.
 
 ##### Add plugin to your Cordova app
 
@@ -22,14 +23,33 @@ Make sure you put in your valid API keys in their respective place.
 
 `cordova plugin add https://github.com/chroa/twitter-connect-plugin --variable FABRIC_KEY=<Fabric API Key> --variable TWITTER_KEY=<Twitter Consumer Key> --variable TWITTER_SECRET=<Twitter Consumer Secret>`
 
+For iOS, the deployment target needs to be at least 7.0. You can set this in the config.xml file like so:
+````
+<preference name="deployment-target" value="7.0" />
+````
+
 ##### Dependencies
 
 Dependencies have been added in the Android version for the core SDK (````com.twitter.sdk.android.core````) and for retrofit ````retrofit.*```` to simplify the REST URLs (See [Square Retrofit](http://square.github.io/retrofit/))
 
 ##### Finished!
-
 You should now be able to: `cordova run android` or `cordova run ios`
 
+### Phonegap Build
+Add the following to your config:
+
+```
+<gap:plugin name="twitter-connect-plugin" source="npm" spec="0.5.0">
+  <param name="FABRIC_KEY" value="<Fabric API Key>" />
+  <param name="TWITTER_KEY" value="<Twitter Consumer Key>" />
+  <param name="TWITTER_SECRET" value="<Twitter Consumer Secret>" />
+</gap:plugin>
+```
+
+You'll need to specify iOS7 for TwitterKit
+```
+<preference name="deployment-target" value="7.0" />
+```
 
 ### Usage
 
