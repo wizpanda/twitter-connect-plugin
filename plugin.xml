@@ -47,6 +47,8 @@
 
 		<framework src="src/android/twitter.gradle" custom="true" type="gradleReference" />
 		<source-file src="src/android/TwitterConnect.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
+		<source-file src="src/android/UserShowServiceApi.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
+		<source-file src="src/android/VerifyCredentialsServiceApi.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
 		<source-file src="src/android/TimelineListActivity.java" target-dir="src/com/manifestwebdesign/twitterconnect" />
 		<source-file src="src/android/timeline.xml" target-dir="res/layout" />
 	</platform>
