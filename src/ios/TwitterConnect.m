@@ -50,7 +50,7 @@
 	TWTRAPIClient *apiClient = [[Twitter sharedInstance] APIClient];
 
 	NSMutableDictionary *requestParameters = [[NSMutableDictionary alloc] init];
-    [requestParameters setObject:[[[Twitter sharedInstance] session] userId] forKey:@"user_id"];
+    [requestParameters setObject:[[[Twitter sharedInstance] session] userID] forKey:@"user_id"];
     
     NSString *include_entities = @"false";
     

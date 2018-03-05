@@ -1,3 +1,4 @@
+cordova.define("twitter-connect-plugin.TwitterConnect", function(require, exports, module) {
 var exec = require('cordova/exec');
 
 var TwitterConnect = {
@@ -27,3 +28,5 @@ var TwitterConnect = {
 };
 
 module.exports = TwitterConnect;
+
+});
